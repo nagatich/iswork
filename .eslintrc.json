@@ -1,3 +1,73 @@
 {
-  "extends": "next/core-web-vitals"
+  "parser": "@typescript-eslint/parser", // Specifies the ESLint parser
+  "parserOptions": {
+    "ecmaVersion": 2020, // Allows for the parsing of modern ECMAScript features
+    "sourceType": "module", // Allows for the use of imports
+    "ecmaFeatures": {
+      "jsx": true // Allows for the parsing of JSX
+    }
+  },
+  "settings": {
+    "react": {
+      "version": "detect" // Tells eslint-plugin-react to automatically detect the version of React to use
+    },
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"],
+        "paths": ["./pages"]
+      },
+      "webpack": {}
+    }
+  },
+  "env": {
+    "es6": true,
+    "commonjs": true,
+    "browser": true,
+    "jest": true
+  },
+  "extends": [
+    "next/core-web-vitals",
+    "eslint-config-airbnb",
+    "plugin:react/recommended", // Uses the recommended rules from @eslint-plugin-react
+    "plugin:react-hooks/recommended",
+    "plugin:@typescript-eslint/recommended" // Uses the recommended rules from @typescript-eslint/eslint-plugin
+  ],
+  "rules": {
+    "import/extensions": ["error", "never"],
+    "import/order": ["error", {
+      "groups": ["builtin", "external", "internal", "parent", "sibling", "type", "index"],
+      "newlines-between": "always"
+    }],
+    "import/prefer-default-export": 0,
+    "max-len": ["error", { "code": 120 }],
+    "no-restricted-imports": ["error", { "patterns": ["*../..*"] }],
+    "object-curly-newline": ["error", {
+      "multiline": true,
+      "consistent": true
+    }],
+    "react/display-name": 0,
+    "react/jsx-filename-extension": [1, { "extensions": [".tsx", ".jsx"] }],
+    "react/jsx-max-props-per-line": ["error", { "maximum": 1, "when": "always" }],
+    "react/jsx-props-no-spreading": 0,
+    "react/prop-types": 0,
+    "semi": ["error", "never"],
+    "@typescript-eslint/explicit-module-boundary-types": 0,
+    "@typescript-eslint/no-explicit-any": 0,
+    "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
+    "@typescript-eslint/member-delimiter-style": ["error", {
+      "multiline": {
+        "delimiter": "none",
+        "requireLast": true
+      },
+      "singleline": {
+        "delimiter": "semi",
+        "requireLast": false
+      }
+    }],
+    "@typescript-eslint/semi": ["error", "never"],
+    "no-use-before-define": "off",
+    "@typescript-eslint/no-use-before-define": ["error"],
+    "lines-between-class-members": ["error", "always", { "exceptAfterSingleLine": true }],
+    "react/function-component-definition": "off"
+  }
 }
